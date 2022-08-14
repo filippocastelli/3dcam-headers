@@ -1,0 +1,12 @@
+*.dep
+*.o
+*.map
+*.bin
+*.cue
+*.elf
+*.ps-exe
+*.lvl*
+psyq/
+thirdparty/psyq/
+.vscode/
+
