@@ -51,5 +51,22 @@ SECTIONS {
 			. = ALIGN(4);
 			__lvl1_end = .;			
 		}
+
+		.lvl2
+        {
+			KEEP(levels/level2.o(.text))
+			__lvl2_ctor = .;
+			KEEP(levels/level2.o(.text.startup._GLOBAL__*))
+			KEEP(levels/level2.o(.text.*))
+			KEEP(levels/level2.o(.rodata*))
+			KEEP(levels/level2.o(.sdata*))
+			KEEP(levels/level2.o(.data*))
+			KEEP(levels/level2.o(.sbss*))
+			KEEP(levels/level2.o(.bss*))
+			KEEP(levels/level2.o(.ctors))
+			
+			. = ALIGN(4);
+			__lvl2_end = .;			
+		}
 	}
 }

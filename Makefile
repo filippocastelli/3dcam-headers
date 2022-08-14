@@ -21,6 +21,7 @@ src/space.c \
 src/sound.c \
 levels/level0.c \
 levels/level1.c \
+levels/level2.c \
 TIM/home.tim \
 TIM/cat.tim \
 TIM/lara.tim \
@@ -45,6 +46,6 @@ VAG/7_wron.vag \
 VAG/8_yooo.vag \
 
 OVERLAYSCRIPT  ?= overlay.ld
-OVERLAYSECTION ?= .lvl0 .lvl1
+OVERLAYSECTION ?= .lvl0 .lvl1 .lvl2
 
 include ./common.mk 

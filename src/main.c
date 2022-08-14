@@ -32,14 +32,17 @@
 extern u_long load_all_overlays_here;
 extern u_long __lvl0_end;
 extern u_long __lvl1_end;
+extern u_long __lvl2_end;
+
 u_long overlaySize = 0;
 
 #include "../levels/level0.h"
 #include "../levels/level1.h"
+#include "../levels/level2.h"
 
 // Levels
-u_char level = 0;
-u_short levelWas = 0;
+u_char level = 2;
+u_short levelWas = 2;
 u_short levelHasChanged = 0;
 // Overlay
 static char* overlayFile;
@@ -131,6 +134,9 @@ int main() {
         overlayFile = "\\level1.bin;1";
         overlaySize = __lvl1_end;
         //~ loadLvl     = &level1;
+    } else if (level == 2) {
+        overlayFile = "\\level2.bin;1";
+        overlaySize = __lvl2_end;
     }
     // Load overlay from cd
     #ifdef USECD
@@ -143,8 +149,10 @@ int main() {
     if ( level == 0 ) {
         LvlPtrSet( &curLvl, &level0);
     } else if ( level == 1) {
-        //~ LvlPtrSet( &curLvl, &level1);
-    } 
+        LvlPtrSet( &curLvl, &level1);
+    } else if ( level == 2) {
+        LvlPtrSet( &curLvl, &level2);
+    }
     levelWas = level;
     // Copy light matrices / vector to scratchpad
     setDCLightEnv(curLvl.cmat, curLvl.lgtmat, &lgtang);
@@ -218,7 +226,10 @@ int main() {
                     overlaySize = __lvl1_end;
                     //~ loadLvl     = &level1;
                     // Copy light matrices / vector to scratchpad
-
+                    break;
+                case 2:
+                    overlayFile = "\\level2.bin;1";
+                    overlaySize = __lvl2_end;
                     break;
                 default:
                     overlayFile = "\\level0.bin;1";
