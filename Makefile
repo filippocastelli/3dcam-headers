@@ -3,7 +3,7 @@ TARGET = 3dcam
 .PHONY: all cleansub
 
 all:
-	mkpsxiso -y ./config/3dcam.xml
+	mkpsxiso -y 3dcam.xml
 
 cleansub:
 	$(MAKE) clean
