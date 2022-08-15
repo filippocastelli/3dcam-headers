@@ -44,6 +44,9 @@ u_long overlaySize = 0;
 u_char level = 2;
 u_short levelWas = 2;
 u_short levelHasChanged = 0;
+
+u_short MAX_LEVELS = 2; // Number of levels
+
 // Overlay
 static char* overlayFile;
 // Display and draw environments, double buffered
@@ -606,7 +609,10 @@ void callback() {
         //~ PCload( &load_all_overlays_here, &levelHasChanged, overlayFile );
         #endif
         #ifdef USECD
-            level = !level;
+            level += 1;
+            if (level > MAX_LEVELS){
+                level = 0;
+            };
             //~ levelHasChanged = 1;
         #endif
         //~ }
